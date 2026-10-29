@@ -521,7 +521,9 @@ impl<'ast, 'a> Visit<'ast> for Scanner<'a> {
     fn visit_expr_cast(&mut self, c: &'ast syn::ExprCast) {
         if let syn::Type::Ptr(p) = &*c.ty {
             let src = compact(&*c.expr);
-            if p.mutability.is_some() && (src.ends_with("as_ptr()") || src.contains("*const")) {
+            // compact() deja "v . as_ptr ()": se mira el AST, no el texto
+            let from_as_ptr = matches!(&*c.expr, syn::Expr::MethodCall(m) if m.method == "as_ptr");
+            if p.mutability.is_some() && (from_as_ptr || src.contains("*const")) {
                 self.push(c.as_token.span, "const-to-mut", Risk::High, format!("{src} as {}", compact(&*c.ty)), CK_CONST_MUT);
             } else {
                 self.push(c.as_token.span, "ptr-cast", Risk::Low, format!("{src} as {}", compact(&*c.ty)), CK_CAST);

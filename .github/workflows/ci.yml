@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Tests
+        run: cargo test --locked --release
+      - name: El archivo generado del demo coincide con la salida actual
+        run: |
+          cargo run --release --locked -- scan examples/demo-ffi --emit-tests regen.rs > /dev/null
+          diff -u examples/demo-ffi/tests/generated.rs regen.rs
+
+  miri:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@nightly
+        with:
+          components: miri, rust-src
+      - name: Tests generados bajo miri (buggy -> UB, fixed -> pasa)
+        run: python3 lab/miri_demo.py
+
+  lab:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: cargo build --release --locked
+      - name: Laboratorio (descarga crates de crates.io; un crate que no baja cuenta como fallo)
+        run: |
+          mkdir -p lab/out
+          python -m lab.measure --json > lab/out/dev.json || echo "criterio no cumplido en corpus de desarrollo (ver README)"
+          python -m lab.measure --json --corpus lab/advisories-holdout.json > lab/out/holdout.json || echo "criterio no cumplido en corpus retenido (ver README)"
+          python lab/check_ran.py lab/out/dev.json lab/out/holdout.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lab-results
+          path: lab/out/

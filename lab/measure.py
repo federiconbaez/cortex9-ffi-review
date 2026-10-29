@@ -74,8 +74,8 @@ def advisory_hit(adv: dict, rep: dict):
     return best
 
 
-def run(verbose=True):
-    advs = json.loads((ROOT / "lab" / "advisories.json").read_text())["advisories"]
+def run(verbose=True, corpus=None, clean=True):
+    advs = json.loads(pathlib.Path(corpus or ROOT / "lab" / "advisories.json").read_text())["advisories"]
     rows = []
     for a in advs:
         row = {"id": a["id"], "crate": a["crate"], "version": a["vulnerable_version"], "functions": a["functions"]}
@@ -98,7 +98,7 @@ def run(verbose=True):
 
     labels = json.loads((ROOT / "lab" / "clean_labels.json").read_text())
     clean = []
-    for name, ver in CLEAN:
+    for name, ver in (CLEAN if clean else []):
         rep = scan(fetch(name, ver))
         mh = [f for f in rep["report"]["findings"] if f["risk"] in ("medium", "high")]
         lab = labels.get(f"{name}-{ver}", {})
@@ -119,22 +119,23 @@ def run(verbose=True):
     noise_rate = noise / total if total else 0.0
     return {"advisories": rows, "hits": hits, "hits_top10": top10, "hits_medium_high": strict, "total": len(rows), "clean": clean,
             "clean_findings": total, "clean_noise": noise, "clean_unlabeled": unl, "noise_rate": round(noise_rate, 3),
-            "criterion_met": hits >= 15 and noise_rate <= 0.30 and unl == 0}
+            "criterion_met": (hits >= 15 and noise_rate <= 0.30 and unl == 0) if clean else hits * 4 >= 3 * len(rows)}
 
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--json", action="store_true")
+    ap.add_argument("--corpus", help="archivo de advisories alternativo (corpus retenido: sin crates limpios, umbral 75%%)")
     a = ap.parse_args()
     if not BIN.exists():
         print("build first: cargo build --release", file=sys.stderr)
         return 2
-    res = run(verbose=not a.json)
+    res = run(verbose=not a.json, corpus=a.corpus, clean=a.corpus is None)
     if a.json:
         print(json.dumps(res, indent=1))
     print(f"advisories flagged: {res['hits']}/{res['total']} (with a medium/high finding: {res['hits_medium_high']}/{res['total']}; in top 10 of ranking: {res['hits_top10']}/{res['total']}); "
           f"clean-crate noise: {res['clean_noise']}/{res['clean_findings']} = {res['noise_rate']:.0%} (unlabeled {res['clean_unlabeled']}); "
-          f"criterion met: {res['criterion_met']}")
+          f"criterion met: {res['criterion_met']}", file=sys.stderr if a.json else sys.stdout)
     return 0 if res["criterion_met"] else 1
 
 
