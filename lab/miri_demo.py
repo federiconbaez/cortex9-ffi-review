@@ -28,7 +28,8 @@ def main() -> int:
         out = p.stdout + p.stderr
         if p.returncode == 0 and "1 passed" in out:
             res[n] = "pass"
-        elif "Undefined Behavior" in out:
+        elif "Undefined Behavior" in out or "unsafe precondition(s) violated" in out:
+            # miri reporta UB directo, o el chequeo de precondiciones de la std aborta antes
             res[n] = "ub"
         else:
             print(out[-3000:])
