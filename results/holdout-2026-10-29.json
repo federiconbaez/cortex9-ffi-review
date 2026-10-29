@@ -1,0 +1,226 @@
+{
+ "advisories": [
+  {
+   "id": "RUSTSEC-2025-0053",
+   "crate": "arenavec",
+   "version": "0.1.1",
+   "functions": [
+    "arenavec::common::AllocHandle::allocate",
+    "arenavec::common::AllocHandle::allocate_or_extend",
+    "arenavec::common::SliceVec::split_off",
+    "arenavec::common::allocate_inner"
+   ],
+   "parse_errors": 0,
+   "functions_ranked": 25,
+   "hit": {
+    "function": "arenavec::common::SliceVec::split_off",
+    "matched": "SliceVec::split_off",
+    "findings": 3,
+    "kinds": [
+     "ptr-arith",
+     "ptr-read-write",
+     "unsafe-block"
+    ],
+    "max_risk": "medium",
+    "rank": 11
+   }
+  },
+  {
+   "id": "RUSTSEC-2025-0050",
+   "crate": "id-map",
+   "version": "0.2.1",
+   "functions": [
+    "id_map::IdMap::from_iter"
+   ],
+   "parse_errors": 0,
+   "functions_ranked": 24,
+   "hit": {
+    "function": "id_map::IdMap::from_iter",
+    "matched": "IdMap::from_iter",
+    "findings": 2,
+    "kinds": [
+     "set-len",
+     "unsafe-block"
+    ],
+    "max_risk": "high",
+    "rank": 14
+   }
+  },
+  {
+   "id": "RUSTSEC-2025-0049",
+   "crate": "scratchpad",
+   "version": "1.3.1",
+   "functions": [
+    "scratchpad::Tracking::get",
+    "scratchpad::Tracking::set"
+   ],
+   "parse_errors": 0,
+   "functions_ranked": 93,
+   "hit": null
+  },
+  {
+   "id": "RUSTSEC-2025-0044",
+   "crate": "slice-ring-buffer",
+   "version": "0.3.4",
+   "functions": [
+    "slice_ring_buffer::IntoIter::clone",
+    "slice_ring_buffer::SliceRingBuffer::extend_from_slice",
+    "slice_ring_buffer::SliceRingBuffer::insert",
+    "slice_ring_buffer::SliceRingBuffer::shrink_to_fit"
+   ],
+   "parse_errors": 0,
+   "functions_ranked": 103,
+   "hit": {
+    "function": "slice_ring_buffer::SliceRingBuffer::insert",
+    "matched": "SliceRingBuffer::insert",
+    "findings": 8,
+    "kinds": [
+     "ptr-arith",
+     "ptr-read-write",
+     "unsafe-block"
+    ],
+    "max_risk": "medium",
+    "rank": 1
+   }
+  },
+  {
+   "id": "RUSTSEC-2025-0031",
+   "crate": "tanton_engine",
+   "version": "1.0.0",
+   "functions": [
+    "tanton_engine::RootMoveList::insert_score",
+    "tanton_engine::RootMoveList::insert_score_depth",
+    "tanton_engine::Stack::offset",
+    "tanton_engine::ThreadStack::get"
+   ],
+   "parse_errors": 0,
+   "functions_ranked": 96,
+   "hit": {
+    "function": "tanton_engine::Stack::offset",
+    "matched": "Stack::offset",
+    "findings": 3,
+    "kinds": [
+     "ptr-arith",
+     "ptr-cast",
+     "unsafe-block"
+    ],
+    "max_risk": "medium",
+    "rank": 32
+   }
+  },
+  {
+   "id": "RUSTSEC-2025-0022",
+   "crate": "openssl",
+   "version": "0.10.71",
+   "functions": [
+    "openssl::cipher::Cipher::fetch",
+    "openssl::md::Md::fetch"
+   ],
+   "parse_errors": 0,
+   "functions_ranked": 1117,
+   "hit": {
+    "function": "openssl::cipher::Cipher::fetch",
+    "matched": "Cipher::fetch",
+    "findings": 2,
+    "kinds": [
+     "cstr-from-ptr",
+     "unsafe-block"
+    ],
+    "max_risk": "medium",
+    "rank": 308
+   }
+  },
+  {
+   "id": "RUSTSEC-2025-0020",
+   "crate": "pyo3",
+   "version": "0.24.0",
+   "functions": [
+    "pyo3::types::PyString::from_object",
+    "pyo3::types::PyString::from_object_bound"
+   ],
+   "parse_errors": 0,
+   "functions_ranked": 548,
+   "hit": {
+    "function": "pyo3::types::PyString::from_object",
+    "matched": "PyString::from_object",
+    "findings": 1,
+    "kinds": [
+     "unsafe-block"
+    ],
+    "max_risk": "low",
+    "rank": 463
+   }
+  },
+  {
+   "id": "RUSTSEC-2025-0018",
+   "crate": "xmas-elf",
+   "version": "0.9.1",
+   "functions": [
+    "xmas_elf::hash::HashTable::get_bucket",
+    "xmas_elf::hash::HashTable::get_chain"
+   ],
+   "parse_errors": 0,
+   "functions_ranked": 22,
+   "hit": {
+    "function": "xmas_elf::hash::HashTable::get_bucket",
+    "matched": "HashTable::get_bucket",
+    "findings": 3,
+    "kinds": [
+     "ptr-arith",
+     "ptr-cast",
+     "unsafe-block"
+    ],
+    "max_risk": "medium",
+    "rank": 2
+   }
+  },
+  {
+   "id": "RUSTSEC-2025-0016",
+   "crate": "pared",
+   "version": "0.3.0",
+   "functions": [
+    "pared::prc::Prc::from_rc",
+    "pared::prc::Prc::project",
+    "pared::prc::Prc::try_from_rc",
+    "pared::sync::Parc::from_arc",
+    "pared::sync::Parc::project",
+    "pared::sync::Parc::try_from_arc"
+   ],
+   "parse_errors": 0,
+   "functions_ranked": 62,
+   "hit": {
+    "function": "pared::sync::Parc::from_arc",
+    "matched": "Parc::from_arc",
+    "findings": 3,
+    "kinds": [
+     "const-to-mut",
+     "ptr-cast",
+     "unsafe-block"
+    ],
+    "max_risk": "high",
+    "rank": 2
+   }
+  },
+  {
+   "id": "RUSTSEC-2025-0005",
+   "crate": "grcov",
+   "version": "0.8.20",
+   "functions": [
+    "grcov::covdir::get_coverage"
+   ],
+   "parse_errors": 0,
+   "functions_ranked": 2,
+   "hit": null
+  }
+ ],
+ "hits": 8,
+ "hits_top10": 3,
+ "hits_medium_high": 7,
+ "total": 10,
+ "clean": [],
+ "clean_findings": 0,
+ "clean_noise": 0,
+ "clean_unlabeled": 0,
+ "noise_rate": 0.0,
+ "criterion_met": true
+}

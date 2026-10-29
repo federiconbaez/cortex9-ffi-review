@@ -1,0 +1,462 @@
+{
+ "advisories": [
+  {
+   "id": "RUSTSEC-2026-0403",
+   "crate": "zstd-safe",
+   "version": "8.1.0",
+   "functions": [
+    "zstd_safe::DCtx::decompress_stream"
+   ],
+   "parse_errors": 0,
+   "functions_ranked": 159,
+   "hit": {
+    "function": "zstd_safe::DCtx::decompress_stream",
+    "matched": "DCtx::decompress_stream",
+    "findings": 1,
+    "kinds": [
+     "unsafe-block"
+    ],
+    "max_risk": "low",
+    "rank": 76
+   }
+  },
+  {
+   "id": "RUSTSEC-2026-0398",
+   "crate": "zstd-safe",
+   "version": "8.1.0",
+   "functions": [
+    "zstd_safe::seekable::AdvancedSeekable::decompress",
+    "zstd_safe::seekable::Seekable::decompress"
+   ],
+   "parse_errors": 0,
+   "functions_ranked": 159,
+   "hit": {
+    "function": "zstd_safe::seekable::Seekable::decompress",
+    "matched": "Seekable::decompress",
+    "findings": 1,
+    "kinds": [
+     "unsafe-block"
+    ],
+    "max_risk": "low",
+    "rank": 110
+   }
+  },
+  {
+   "id": "RUSTSEC-2026-0391",
+   "crate": "zstd",
+   "version": "0.14.2",
+   "functions": [
+    "zstd::stream::raw::Decoder::with_context",
+    "zstd::stream::raw::Encoder::with_context"
+   ],
+   "parse_errors": 0,
+   "functions_ranked": 1,
+   "hit": null
+  },
+  {
+   "id": "RUSTSEC-2026-0300",
+   "crate": "skiplist",
+   "version": "1.1.0",
+   "functions": [
+    "skiplist::ordered_skip_list::OrderedSkipList::clear",
+    "skiplist::ordered_skip_list::OrderedSkipList::dedup_by",
+    "skiplist::ordered_skip_list::OrderedSkipList::retain",
+    "skiplist::skip_list::SkipList::clear",
+    "skiplist::skip_list::SkipList::dedup_by",
+    "skiplist::skip_list::SkipList::retain",
+    "skiplist::skip_list::SkipList::retain_mut",
+    "skiplist::skip_map::SkipMap::clear",
+    "skiplist::skip_map::SkipMap::retain"
+   ],
+   "parse_errors": 0,
+   "functions_ranked": 187,
+   "hit": {
+    "function": "skiplist::ordered_skip_list::OrderedSkipList::clear",
+    "matched": "OrderedSkipList::clear",
+    "findings": 3,
+    "kinds": [
+     "ptr-read-write",
+     "unsafe-block"
+    ],
+    "max_risk": "medium",
+    "rank": 39
+   }
+  },
+  {
+   "id": "RUSTSEC-2026-0298",
+   "crate": "unicycle",
+   "version": "0.10.2",
+   "functions": [
+    "unicycle::Unordered::drop"
+   ],
+   "parse_errors": 0,
+   "functions_ranked": 37,
+   "hit": {
+    "function": "unicycle::Unordered::drop",
+    "matched": "Unordered::drop",
+    "findings": 2,
+    "kinds": [
+     "ownership-from-raw",
+     "unsafe-block"
+    ],
+    "max_risk": "high",
+    "rank": 4
+   }
+  },
+  {
+   "id": "RUSTSEC-2026-0293",
+   "crate": "ringbuf",
+   "version": "0.5.1",
+   "functions": [
+    "ringbuf::traits::consumer::Consumer::clear",
+    "ringbuf::traits::consumer::Consumer::skip"
+   ],
+   "parse_errors": 0,
+   "functions_ranked": 114,
+   "hit": {
+    "function": "ringbuf::traits::consumer::Consumer::clear",
+    "matched": "Consumer::clear",
+    "findings": 2,
+    "kinds": [
+     "ptr-read-write",
+     "unsafe-block"
+    ],
+    "max_risk": "medium",
+    "rank": 18
+   }
+  },
+  {
+   "id": "RUSTSEC-2026-0292",
+   "crate": "imbl-sized-chunks",
+   "version": "0.1.3",
+   "functions": [
+    "imbl_sized_chunks::inline_array::InlineArray::clear",
+    "imbl_sized_chunks::inline_array::InlineArray::truncate",
+    "imbl_sized_chunks::sized_chunk::Chunk::clear",
+    "imbl_sized_chunks::sized_chunk::Chunk::drop_left",
+    "imbl_sized_chunks::sized_chunk::Chunk::drop_right"
+   ],
+   "parse_errors": 0,
+   "functions_ranked": 117,
+   "hit": {
+    "function": "imbl_sized_chunks::sized_chunk::Chunk::clear",
+    "matched": "Chunk::clear",
+    "findings": 2,
+    "kinds": [
+     "ptr-read-write",
+     "unsafe-block"
+    ],
+    "max_risk": "medium",
+    "rank": 29
+   }
+  },
+  {
+   "id": "RUSTSEC-2026-0291",
+   "crate": "owned-alloc",
+   "version": "0.2.0",
+   "functions": [
+    "owned_alloc::MaybeUninitAlloc::drop_in_place",
+    "owned_alloc::OwnedAlloc::drop_in_place"
+   ],
+   "parse_errors": 0,
+   "functions_ranked": 35,
+   "hit": {
+    "function": "owned_alloc::OwnedAlloc::drop_in_place",
+    "matched": "OwnedAlloc::drop_in_place",
+    "findings": 4,
+    "kinds": [
+     "ownership-from-raw",
+     "ownership-to-raw",
+     "ptr-read-write",
+     "unsafe-block"
+    ],
+    "max_risk": "high",
+    "rank": 1
+   }
+  },
+  {
+   "id": "RUSTSEC-2026-0282",
+   "crate": "aligned_box",
+   "version": "0.3.0",
+   "functions": [
+    "aligned_box::AlignedBox::realloc_with_default"
+   ],
+   "parse_errors": 0,
+   "functions_ranked": 12,
+   "hit": {
+    "function": "aligned_box::AlignedBox::realloc_with_default",
+    "matched": "AlignedBox::realloc_with_default",
+    "findings": 2,
+    "kinds": [
+     "ptr-read-write",
+     "unsafe-block"
+    ],
+    "max_risk": "medium",
+    "rank": 8
+   }
+  },
+  {
+   "id": "RUSTSEC-2026-0274",
+   "crate": "rtrb",
+   "version": "0.3.4",
+   "functions": [
+    "rtrb::chunks::ReadChunk::commit",
+    "rtrb::chunks::ReadChunk::commit_all"
+   ],
+   "parse_errors": 0,
+   "functions_ranked": 37,
+   "hit": {
+    "function": "rtrb::chunks::ReadChunk::commit",
+    "matched": "ReadChunk::commit",
+    "findings": 1,
+    "kinds": [
+     "unsafe-block"
+    ],
+    "max_risk": "low",
+    "rank": 32
+   }
+  },
+  {
+   "id": "RUSTSEC-2026-0217",
+   "crate": "tract-nnef",
+   "version": "0.23.0",
+   "functions": [
+    "tract_nnef::tensors::read_tensor"
+   ],
+   "parse_errors": 0,
+   "functions_ranked": 6,
+   "hit": {
+    "function": "tract_nnef::tensors::read_tensor",
+    "matched": "read_tensor",
+    "findings": 3,
+    "kinds": [
+     "set-len",
+     "unsafe-block"
+    ],
+    "max_risk": "high",
+    "rank": 2
+   }
+  },
+  {
+   "id": "RUSTSEC-2026-0176",
+   "crate": "pyo3",
+   "version": "0.28.3",
+   "functions": [
+    "pyo3::types::list::BoundListIterator::nth",
+    "pyo3::types::list::BoundListIterator::nth_back",
+    "pyo3::types::tuple::BoundTupleIterator::nth",
+    "pyo3::types::tuple::BoundTupleIterator::nth_back"
+   ],
+   "parse_errors": 0,
+   "functions_ranked": 630,
+   "hit": {
+    "function": "pyo3::types::list::BoundListIterator::nth",
+    "matched": "BoundListIterator::nth",
+    "findings": 1,
+    "kinds": [
+     "unsafe-block"
+    ],
+    "max_risk": "low",
+    "rank": 434
+   }
+  },
+  {
+   "id": "RUSTSEC-2026-0041",
+   "crate": "lz4_flex",
+   "version": "0.10.0",
+   "functions": [
+    "lz4_flex::block::decompress",
+    "lz4_flex::block::decompress_into",
+    "lz4_flex::block::decompress_into_with_dict",
+    "lz4_flex::block::decompress_size_prepended",
+    "lz4_flex::block::decompress_size_prepended_with_dict",
+    "lz4_flex::block::decompress_with_dict"
+   ],
+   "parse_errors": 0,
+   "functions_ranked": 37,
+   "hit": null
+  },
+  {
+   "id": "RUSTSEC-2025-0143",
+   "crate": "capnp",
+   "version": "0.23.2",
+   "functions": [
+    "capnp::constant::Reader::get",
+    "capnp::schema::StructSchema::new"
+   ],
+   "parse_errors": 0,
+   "functions_ranked": 134,
+   "hit": {
+    "function": "capnp::constant::Reader::get",
+    "matched": "Reader::get",
+    "findings": 2,
+    "kinds": [
+     "ptr-cast",
+     "unsafe-block"
+    ],
+    "max_risk": "low",
+    "rank": 85
+   }
+  },
+  {
+   "id": "RUSTSEC-2025-0140",
+   "crate": "gix-date",
+   "version": "0.11.1",
+   "functions": [
+    "gix_date::parse::TimeBuf::as_str"
+   ],
+   "parse_errors": 0,
+   "functions_ranked": 2,
+   "hit": {
+    "function": "gix_date::parse::TimeBuf::as_str",
+    "matched": "TimeBuf::as_str",
+    "findings": 2,
+    "kinds": [
+     "unsafe-block",
+     "utf8-unchecked"
+    ],
+    "max_risk": "medium",
+    "rank": 1
+   }
+  },
+  {
+   "id": "RUSTSEC-2025-0137",
+   "crate": "ruint",
+   "version": "1.17.0",
+   "functions": [
+    "ruint::algorithms::div::reciprocal_mg10"
+   ],
+   "parse_errors": 0,
+   "functions_ranked": 50,
+   "hit": {
+    "function": "ruint::algorithms::div::reciprocal_mg10",
+    "matched": "reciprocal_mg10",
+    "findings": 2,
+    "kinds": [
+     "unchecked",
+     "unsafe-block"
+    ],
+    "max_risk": "medium",
+    "rank": 24
+   }
+  },
+  {
+   "id": "RUSTSEC-2025-0132",
+   "crate": "maxminddb",
+   "version": "0.26.0",
+   "functions": [
+    "maxminddb::Reader::open",
+    "maxminddb::Reader::open_mmap"
+   ],
+   "parse_errors": 0,
+   "functions_ranked": 2,
+   "hit": {
+    "function": "maxminddb::Reader::open_mmap",
+    "matched": "Reader::open_mmap",
+    "findings": 1,
+    "kinds": [
+     "unsafe-block"
+    ],
+    "max_risk": "low",
+    "rank": 2
+   }
+  },
+  {
+   "id": "RUSTSEC-2025-0063",
+   "crate": "fast-able",
+   "version": "1.13.6",
+   "functions": [
+    "fast_able::vec::SyncVec::get_unchecked"
+   ],
+   "parse_errors": 0,
+   "functions_ranked": 82,
+   "hit": null
+  },
+  {
+   "id": "RUSTSEC-2025-0062",
+   "crate": "toodee",
+   "version": "0.5.0",
+   "functions": [
+    "toodee::DrainCol::drop"
+   ],
+   "parse_errors": 0,
+   "functions_ranked": 60,
+   "hit": {
+    "function": "toodee::DrainCol::drop",
+    "matched": "DrainCol::drop",
+    "findings": 1,
+    "kinds": [
+     "ownership-to-raw"
+    ],
+    "max_risk": "low",
+    "rank": 56
+   }
+  },
+  {
+   "id": "RUSTSEC-2025-0054",
+   "crate": "array-queue",
+   "version": "0.3.3",
+   "functions": [
+    "array_queue::ArrayQueue::push_front"
+   ],
+   "parse_errors": 0,
+   "functions_ranked": 8,
+   "hit": {
+    "function": "array_queue::ArrayQueue::push_front",
+    "matched": "ArrayQueue::push_front",
+    "findings": 1,
+    "kinds": [
+     "ownership-to-raw"
+    ],
+    "max_risk": "low",
+    "rank": 8
+   }
+  }
+ ],
+ "hits": 17,
+ "hits_top10": 7,
+ "hits_medium_high": 9,
+ "total": 20,
+ "clean": [
+  {
+   "crate": "errno-0.3.14",
+   "medium_high": 3,
+   "noise": 0,
+   "unlabeled": 0,
+   "parse_errors": 0
+  },
+  {
+   "crate": "libloading-0.9.0",
+   "medium_high": 19,
+   "noise": 1,
+   "unlabeled": 0,
+   "parse_errors": 0
+  },
+  {
+   "crate": "region-3.0.2",
+   "medium_high": 16,
+   "noise": 4,
+   "unlabeled": 0,
+   "parse_errors": 0
+  },
+  {
+   "crate": "page_size-0.6.0",
+   "medium_high": 5,
+   "noise": 2,
+   "unlabeled": 0,
+   "parse_errors": 0
+  },
+  {
+   "crate": "hostname-0.4.1",
+   "medium_high": 1,
+   "noise": 0,
+   "unlabeled": 0,
+   "parse_errors": 0
+  }
+ ],
+ "clean_findings": 44,
+ "clean_noise": 7,
+ "clean_unlabeled": 0,
+ "noise_rate": 0.159,
+ "criterion_met": true
+}
