@@ -43,7 +43,13 @@ Reproducir: `cargo build --release && python -m lab.measure` y
 | 20 advisories RUSTSEC (corpus de desarrollo): hallazgo dentro de la función vulnerable | ≥ 15/20 | 17/20 | cumplido |
 | 10 advisories retenidos (fijados antes de correr) | ≥ 75% | 8/10 | cumplido |
 | Ruido en hallazgos medium/high de 5 crates limpios | ≤ 30% | 7/44 = 16%, 0 sin etiqueta | cumplido |
-| Tests generados bajo miri en el crate demo | cada `buggy_*` da UB, ningún `fixed_*` falla | job `miri` de CI | ver CI |
+| Tests generados bajo miri en el crate demo (CI) | cada `buggy_*` da UB, ningún `fixed_*` falla | 4/4 exports `buggy_*` con UB (6 de 7 tests); 7/7 tests `fixed_*` pasan | cumplido, **por construcción** |
+
+La corrida de CI 40885975002 reprodujo los mismos números del laboratorio (17/20, 8/10
+y 7/44). En miri, el test `buggy_copy` con `NULL` y longitud 0 pasa: la std acepta
+`NULL` con tamaño 0 en `copy_nonoverlapping`, así que solo el de longitud 16 es UB. El
+crate demo y sus bugs sembrados son del mismo autor que el generador: que miri los marque
+muestra que los tests generados ejercitan la frontera, no que encuentren bugs ajenos.
 
 **Lectura honesta del acierto.** El criterio pre-fijado cuenta como acierto *cualquier*
 hallazgo dentro de la función vulnerable, incluido uno de riesgo bajo. Con criterios
