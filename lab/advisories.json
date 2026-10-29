@@ -1,0 +1,400 @@
+{
+ "rule": "(applied in this order, newest advisory id first, stop at 20):\n  1. not withdrawn, informational field absent (a real vulnerability);\n  2. categories include memory-corruption or memory-exposure;\n  3. [affected.functions] lists at least one function path;\n  4. a vulnerable version exists on crates.io (newest non-yanked version that\n     is not covered by `patched` / `unaffected`), downloadable as .crate.\nNothing about the scanner is used to pick advisories.",
+ "eligible_pool": 76,
+ "advisories": [
+  {
+   "id": "RUSTSEC-2026-0403",
+   "crate": "zstd-safe",
+   "functions": [
+    "zstd_safe::DCtx::decompress_stream"
+   ],
+   "versions": {
+    "patched": [
+     ">= 8.2.0"
+    ],
+    "unaffected": [
+     "< 4.0.0"
+    ]
+   },
+   "categories": [
+    "memory-exposure"
+   ],
+   "title": "",
+   "vulnerable_version": "8.1.0"
+  },
+  {
+   "id": "RUSTSEC-2026-0398",
+   "crate": "zstd-safe",
+   "functions": [
+    "zstd_safe::seekable::AdvancedSeekable::decompress",
+    "zstd_safe::seekable::Seekable::decompress"
+   ],
+   "versions": {
+    "patched": [
+     ">= 8.2.0"
+    ],
+    "unaffected": [
+     "< 7.2.2"
+    ]
+   },
+   "categories": [
+    "memory-exposure",
+    "memory-corruption"
+   ],
+   "title": "",
+   "vulnerable_version": "8.1.0"
+  },
+  {
+   "id": "RUSTSEC-2026-0391",
+   "crate": "zstd",
+   "functions": [
+    "zstd::stream::raw::Decoder::with_context",
+    "zstd::stream::raw::Encoder::with_context"
+   ],
+   "versions": {
+    "patched": [
+     ">= 0.14.3"
+    ],
+    "unaffected": [
+     "< 0.13.2"
+    ]
+   },
+   "categories": [
+    "memory-exposure"
+   ],
+   "title": "",
+   "vulnerable_version": "0.14.2"
+  },
+  {
+   "id": "RUSTSEC-2026-0300",
+   "crate": "skiplist",
+   "functions": [
+    "skiplist::ordered_skip_list::OrderedSkipList::clear",
+    "skiplist::ordered_skip_list::OrderedSkipList::dedup_by",
+    "skiplist::ordered_skip_list::OrderedSkipList::retain",
+    "skiplist::skip_list::SkipList::clear",
+    "skiplist::skip_list::SkipList::dedup_by",
+    "skiplist::skip_list::SkipList::retain",
+    "skiplist::skip_list::SkipList::retain_mut",
+    "skiplist::skip_map::SkipMap::clear",
+    "skiplist::skip_map::SkipMap::retain"
+   ],
+   "versions": {
+    "patched": [
+     ">= 1.1.1"
+    ]
+   },
+   "categories": [
+    "memory-corruption"
+   ],
+   "title": "",
+   "vulnerable_version": "1.1.0"
+  },
+  {
+   "id": "RUSTSEC-2026-0298",
+   "crate": "unicycle",
+   "functions": [
+    "unicycle::Unordered::drop"
+   ],
+   "versions": {
+    "patched": [
+     ">= 0.10.3"
+    ]
+   },
+   "categories": [
+    "memory-corruption"
+   ],
+   "title": "",
+   "vulnerable_version": "0.10.2"
+  },
+  {
+   "id": "RUSTSEC-2026-0293",
+   "crate": "ringbuf",
+   "functions": [
+    "ringbuf::traits::consumer::Consumer::clear",
+    "ringbuf::traits::consumer::Consumer::skip"
+   ],
+   "versions": {
+    "patched": [
+     ">= 0.5.2"
+    ]
+   },
+   "categories": [
+    "memory-corruption"
+   ],
+   "title": "",
+   "vulnerable_version": "0.5.1"
+  },
+  {
+   "id": "RUSTSEC-2026-0292",
+   "crate": "imbl-sized-chunks",
+   "functions": [
+    "imbl_sized_chunks::inline_array::InlineArray::clear",
+    "imbl_sized_chunks::inline_array::InlineArray::truncate",
+    "imbl_sized_chunks::sized_chunk::Chunk::clear",
+    "imbl_sized_chunks::sized_chunk::Chunk::drop_left",
+    "imbl_sized_chunks::sized_chunk::Chunk::drop_right"
+   ],
+   "versions": {
+    "patched": [
+     ">= 0.2.0"
+    ]
+   },
+   "categories": [
+    "memory-corruption"
+   ],
+   "title": "",
+   "vulnerable_version": "0.1.3"
+  },
+  {
+   "id": "RUSTSEC-2026-0291",
+   "crate": "owned-alloc",
+   "functions": [
+    "owned_alloc::MaybeUninitAlloc::drop_in_place",
+    "owned_alloc::OwnedAlloc::drop_in_place"
+   ],
+   "versions": {
+    "patched": []
+   },
+   "categories": [
+    "memory-corruption"
+   ],
+   "title": "",
+   "vulnerable_version": "0.2.0"
+  },
+  {
+   "id": "RUSTSEC-2026-0282",
+   "crate": "aligned_box",
+   "functions": [
+    "aligned_box::AlignedBox::realloc_with_default"
+   ],
+   "versions": {
+    "patched": [
+     ">= 0.3.1"
+    ]
+   },
+   "categories": [
+    "memory-corruption"
+   ],
+   "title": "",
+   "vulnerable_version": "0.3.0"
+  },
+  {
+   "id": "RUSTSEC-2026-0274",
+   "crate": "rtrb",
+   "functions": [
+    "rtrb::chunks::ReadChunk::commit",
+    "rtrb::chunks::ReadChunk::commit_all"
+   ],
+   "versions": {
+    "patched": [
+     "^0.3.5",
+     ">= 0.4.0"
+    ]
+   },
+   "categories": [
+    "memory-corruption"
+   ],
+   "title": "",
+   "vulnerable_version": "0.3.4"
+  },
+  {
+   "id": "RUSTSEC-2026-0217",
+   "crate": "tract-nnef",
+   "functions": [
+    "tract_nnef::tensors::read_tensor"
+   ],
+   "versions": {
+    "patched": [
+     ">= 0.21.16, < 0.22.0",
+     ">= 0.22.2, < 0.23.0",
+     ">= 0.23.1"
+    ]
+   },
+   "categories": [
+    "memory-exposure",
+    "denial-of-service"
+   ],
+   "title": "",
+   "vulnerable_version": "0.23.0"
+  },
+  {
+   "id": "RUSTSEC-2026-0176",
+   "crate": "pyo3",
+   "functions": [
+    "pyo3::types::list::BoundListIterator::nth",
+    "pyo3::types::list::BoundListIterator::nth_back",
+    "pyo3::types::tuple::BoundTupleIterator::nth",
+    "pyo3::types::tuple::BoundTupleIterator::nth_back"
+   ],
+   "versions": {
+    "patched": [
+     ">= 0.29.0"
+    ],
+    "unaffected": [
+     "< 0.24.0"
+    ]
+   },
+   "categories": [
+    "memory-exposure"
+   ],
+   "title": "",
+   "vulnerable_version": "0.28.3"
+  },
+  {
+   "id": "RUSTSEC-2026-0041",
+   "crate": "lz4_flex",
+   "functions": [
+    "lz4_flex::block::decompress",
+    "lz4_flex::block::decompress_into",
+    "lz4_flex::block::decompress_into_with_dict",
+    "lz4_flex::block::decompress_size_prepended",
+    "lz4_flex::block::decompress_size_prepended_with_dict",
+    "lz4_flex::block::decompress_with_dict"
+   ],
+   "versions": {
+    "patched": [
+     ">= 0.11.6, < 0.12.0",
+     ">= 0.12.1"
+    ]
+   },
+   "categories": [
+    "memory-exposure"
+   ],
+   "title": "",
+   "vulnerable_version": "0.10.0"
+  },
+  {
+   "id": "RUSTSEC-2025-0143",
+   "crate": "capnp",
+   "functions": [
+    "capnp::constant::Reader::get",
+    "capnp::schema::StructSchema::new"
+   ],
+   "versions": {
+    "patched": [
+     ">= 0.24.0"
+    ]
+   },
+   "categories": [
+    "memory-corruption"
+   ],
+   "title": "",
+   "vulnerable_version": "0.23.2"
+  },
+  {
+   "id": "RUSTSEC-2025-0140",
+   "crate": "gix-date",
+   "functions": [
+    "gix_date::parse::TimeBuf::as_str"
+   ],
+   "versions": {
+    "patched": [
+     ">= 0.12.0"
+    ]
+   },
+   "categories": [
+    "memory-corruption"
+   ],
+   "title": "",
+   "vulnerable_version": "0.11.1"
+  },
+  {
+   "id": "RUSTSEC-2025-0137",
+   "crate": "ruint",
+   "functions": [
+    "ruint::algorithms::div::reciprocal_mg10"
+   ],
+   "versions": {
+    "patched": [
+     ">= 1.17.1"
+    ]
+   },
+   "categories": [
+    "memory-corruption"
+   ],
+   "title": "",
+   "vulnerable_version": "1.17.0"
+  },
+  {
+   "id": "RUSTSEC-2025-0132",
+   "crate": "maxminddb",
+   "functions": [
+    "maxminddb::Reader::open",
+    "maxminddb::Reader::open_mmap"
+   ],
+   "versions": {
+    "patched": [
+     ">= 0.27.0"
+    ],
+    "unaffected": [
+     "< 0.11.0"
+    ]
+   },
+   "categories": [
+    "memory-corruption"
+   ],
+   "title": "",
+   "vulnerable_version": "0.26.0"
+  },
+  {
+   "id": "RUSTSEC-2025-0063",
+   "crate": "fast-able",
+   "functions": [
+    "fast_able::vec::SyncVec::get_unchecked"
+   ],
+   "versions": {
+    "patched": [
+     ">= 1.13.7"
+    ],
+    "unaffected": []
+   },
+   "categories": [
+    "memory-corruption"
+   ],
+   "title": "",
+   "vulnerable_version": "1.13.6"
+  },
+  {
+   "id": "RUSTSEC-2025-0062",
+   "crate": "toodee",
+   "functions": [
+    "toodee::DrainCol::drop"
+   ],
+   "versions": {
+    "patched": [
+     ">= 0.6.0"
+    ],
+    "unaffected": [
+     "< 0.2.0"
+    ]
+   },
+   "categories": [
+    "memory-corruption",
+    "memory-exposure"
+   ],
+   "title": "",
+   "vulnerable_version": "0.5.0"
+  },
+  {
+   "id": "RUSTSEC-2025-0054",
+   "crate": "array-queue",
+   "functions": [
+    "array_queue::ArrayQueue::push_front"
+   ],
+   "versions": {
+    "patched": [
+     ">=0.4.0"
+    ],
+    "unaffected": [
+     "< 0.3.0"
+    ]
+   },
+   "categories": [
+    "memory-corruption"
+   ],
+   "title": "",
+   "vulnerable_version": "0.3.3"
+  }
+ ]
+}

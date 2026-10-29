@@ -1,0 +1,189 @@
+{
+ "_rule": "Labelled by hand by the author after reading each source line. noise = (a) the pattern matched by name but the operation is not the risky one, (b) mem::zeroed() of a plain C struct, (c) a second finding on the same line that repeats the first. Everything else = relevant: a real unsafe operation or FFI boundary that a reviewer has to justify (it does NOT mean the code is buggy).",
+ "errno-0.3.14": {
+  "src/unix.rs:23:utf8-unchecked": {
+   "label": "relevant",
+   "why": "real unsafe operation / boundary to justify"
+  },
+  "src/windows.rs:37:utf8-unchecked": {
+   "label": "relevant",
+   "why": "real unsafe operation / boundary to justify"
+  },
+  "src/wasi.rs:23:utf8-unchecked": {
+   "label": "relevant",
+   "why": "real unsafe operation / boundary to justify"
+  }
+ },
+ "libloading-0.9.0": {
+  "src/safe.rs:149:ownership-from-raw": {
+   "label": "noise",
+   "why": "name match only: libloading's own Symbol::from_raw wraps a symbol pointer, it is not Box/CString::from_raw"
+  },
+  "src/safe.rs:185:unsafe-send-sync": {
+   "label": "relevant",
+   "why": "real unsafe operation / boundary to justify"
+  },
+  "src/safe.rs:186:unsafe-send-sync": {
+   "label": "relevant",
+   "why": "real unsafe operation / boundary to justify"
+  },
+  "src/safe.rs:317:unsafe-send-sync": {
+   "label": "relevant",
+   "why": "real unsafe operation / boundary to justify"
+  },
+  "src/safe.rs:318:unsafe-send-sync": {
+   "label": "relevant",
+   "why": "real unsafe operation / boundary to justify"
+  },
+  "src/os/unix/mod.rs:74:cstr-from-ptr": {
+   "label": "relevant",
+   "why": "real unsafe operation / boundary to justify"
+  },
+  "src/os/unix/mod.rs:86:unsafe-send-sync": {
+   "label": "relevant",
+   "why": "real unsafe operation / boundary to justify"
+  },
+  "src/os/unix/mod.rs:102:unsafe-send-sync": {
+   "label": "relevant",
+   "why": "real unsafe operation / boundary to justify"
+  },
+  "src/os/unix/mod.rs:435:unsafe-send-sync": {
+   "label": "relevant",
+   "why": "real unsafe operation / boundary to justify"
+  },
+  "src/os/unix/mod.rs:436:unsafe-send-sync": {
+   "label": "relevant",
+   "why": "real unsafe operation / boundary to justify"
+  },
+  "src/os/unix/mod.rs:449:ptr-deref": {
+   "label": "relevant",
+   "why": "real unsafe operation / boundary to justify"
+  },
+  "src/os/unix/mod.rs:459:uninit": {
+   "label": "relevant",
+   "why": "real unsafe operation / boundary to justify"
+  },
+  "src/os/windows/mod.rs:26:unsafe-send-sync": {
+   "label": "relevant",
+   "why": "real unsafe operation / boundary to justify"
+  },
+  "src/os/windows/mod.rs:40:unsafe-send-sync": {
+   "label": "relevant",
+   "why": "real unsafe operation / boundary to justify"
+  },
+  "src/os/windows/mod.rs:333:uninit": {
+   "label": "relevant",
+   "why": "real unsafe operation / boundary to justify"
+  },
+  "src/os/windows/mod.rs:340:ptr-deref": {
+   "label": "relevant",
+   "why": "real unsafe operation / boundary to justify"
+  },
+  "src/os/windows/mod.rs:390:unsafe-send-sync": {
+   "label": "relevant",
+   "why": "real unsafe operation / boundary to justify"
+  },
+  "src/os/windows/mod.rs:391:unsafe-send-sync": {
+   "label": "relevant",
+   "why": "real unsafe operation / boundary to justify"
+  },
+  "src/os/windows/mod.rs:402:ptr-deref": {
+   "label": "relevant",
+   "why": "real unsafe operation / boundary to justify"
+  }
+ },
+ "region-3.0.2": {
+  "src/lib.rs:238:unsafe-send-sync": {
+   "label": "relevant",
+   "why": "real unsafe operation / boundary to justify"
+  },
+  "src/lib.rs:239:unsafe-send-sync": {
+   "label": "relevant",
+   "why": "real unsafe operation / boundary to justify"
+  },
+  "src/lock.rs:94:unsafe-send-sync": {
+   "label": "relevant",
+   "why": "real unsafe operation / boundary to justify"
+  },
+  "src/lock.rs:95:unsafe-send-sync": {
+   "label": "relevant",
+   "why": "real unsafe operation / boundary to justify"
+  },
+  "src/page.rs:20:static-mut": {
+   "label": "relevant",
+   "why": "real unsafe operation / boundary to justify"
+  },
+  "src/protect.rs:157:unsafe-send-sync": {
+   "label": "relevant",
+   "why": "real unsafe operation / boundary to justify"
+  },
+  "src/protect.rs:158:unsafe-send-sync": {
+   "label": "relevant",
+   "why": "real unsafe operation / boundary to justify"
+  },
+  "src/query.rs:66:unsafe-send-sync": {
+   "label": "relevant",
+   "why": "real unsafe operation / boundary to justify"
+  },
+  "src/query.rs:67:unsafe-send-sync": {
+   "label": "relevant",
+   "why": "real unsafe operation / boundary to justify"
+  },
+  "src/os/windows.rs:42:uninit": {
+   "label": "noise",
+   "why": "mem::zeroed() of a plain C struct (MEMORY_BASIC_INFORMATION); all-zero is a valid value"
+  },
+  "src/os/windows.rs:140:static-mut": {
+   "label": "relevant",
+   "why": "real unsafe operation / boundary to justify"
+  },
+  "src/os/freebsd.rs:48:ptr-arith": {
+   "label": "relevant",
+   "why": "real unsafe operation / boundary to justify"
+  },
+  "src/os/freebsd.rs:48:ptr-deref": {
+   "label": "noise",
+   "why": "duplicate of the ptr-arith finding on the same line"
+  },
+  "src/os/openbsd.rs:16:uninit": {
+   "label": "noise",
+   "why": "mem::zeroed() of a plain C struct (kinfo_vmentry); all-zero is a valid value"
+  },
+  "src/os/netbsd.rs:43:ptr-arith": {
+   "label": "relevant",
+   "why": "real unsafe operation / boundary to justify"
+  },
+  "src/os/netbsd.rs:43:ptr-deref": {
+   "label": "noise",
+   "why": "duplicate of the ptr-arith finding on the same line"
+  }
+ },
+ "page_size-0.6.0": {
+  "src/lib.rs:79:static-mut": {
+   "label": "relevant",
+   "why": "real unsafe operation / boundary to justify"
+  },
+  "src/lib.rs:130:static-mut": {
+   "label": "relevant",
+   "why": "real unsafe operation / boundary to justify"
+  },
+  "src/lib.rs:150:static-mut": {
+   "label": "relevant",
+   "why": "real unsafe operation / boundary to justify"
+  },
+  "src/lib.rs:171:uninit": {
+   "label": "noise",
+   "why": "mem::zeroed() of a plain C struct (SYSTEM_INFO); all-zero is a valid value"
+  },
+  "src/lib.rs:181:uninit": {
+   "label": "noise",
+   "why": "mem::zeroed() of a plain C struct (SYSTEM_INFO); all-zero is a valid value"
+  }
+ },
+ "hostname-0.4.1": {
+  "src/windows/mod.rs:38:set-len": {
+   "label": "relevant",
+   "why": "real unsafe operation / boundary to justify"
+  }
+ }
+}
