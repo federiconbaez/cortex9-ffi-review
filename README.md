@@ -100,6 +100,15 @@ python3 lab/miri_demo.py  # requiere nightly + miri
 CI: tests, chequeo de que `examples/demo-ffi/tests/generated.rs` coincide con la salida
 actual, miri sobre el demo y el laboratorio completo con artefacto `lab-results`.
 
+## Contribuir, reportar errores y seguridad
+
+*English version: [README.en.md](README.en.md).*
+
+- Errores y pedidos de mejora: <https://github.com/federiconbaez/cortex9-ffi-review/issues>
+- Cómo contribuir (proceso de PR, requisitos y tests): [CONTRIBUTING.md](CONTRIBUTING.md)
+- Vulnerabilidades, por canal privado: [SECURITY.md](SECURITY.md)
+- Cambios por versión: [CHANGELOG.md](CHANGELOG.md)
+
 ## Licencia
 
 Apache-2.0.
