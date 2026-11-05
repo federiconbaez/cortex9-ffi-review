@@ -11,6 +11,7 @@ All notable changes to this project are documented here. The format follows
   (`README.en.md`).
 - CI `lint` job (`cargo fmt --check`, `cargo clippy --all-targets -- -D warnings`)
   and a `cargo audit` step on `Cargo.lock`.
+- CI self-scan: `ffi-review scan . --fail-on medium` on the tool's own source.
 
 ### Changed
 - Source formatted with `rustfmt` (no behavior change; the generated demo test file

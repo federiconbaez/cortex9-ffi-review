@@ -42,6 +42,8 @@ jobs:
         run: |
           cargo run --release --locked -- scan examples/demo-ffi --emit-tests regen.rs > /dev/null
           diff -u examples/demo-ffi/tests/generated.rs regen.rs
+      - name: "Autoescaneo: ffi-review sobre su propio código, sin hallazgos medium/high"
+        run: cargo run --release --locked -- scan . --fail-on medium > /dev/null
 
   miri:
     runs-on: ubuntu-24.04
