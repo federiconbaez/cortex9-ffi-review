@@ -12,8 +12,24 @@ fn demo() -> String {
 #[test]
 fn usage_errors_exit_2() {
     assert_eq!(bin().output().unwrap().status.code(), Some(2));
-    assert_eq!(bin().args(["scan", "/no/existe"]).output().unwrap().status.code(), Some(2));
-    assert_eq!(bin().args(["scan", &demo(), "--top", "x"]).output().unwrap().status.code(), Some(2));
+    assert_eq!(
+        bin()
+            .args(["scan", "/no/existe"])
+            .output()
+            .unwrap()
+            .status
+            .code(),
+        Some(2)
+    );
+    assert_eq!(
+        bin()
+            .args(["scan", &demo(), "--top", "x"])
+            .output()
+            .unwrap()
+            .status
+            .code(),
+        Some(2)
+    );
 }
 
 #[test]
@@ -28,7 +44,10 @@ fn json_report_parses() {
 
 #[test]
 fn fail_on_high_exits_1() {
-    let o = bin().args(["scan", &demo(), "--fail-on", "high"]).output().unwrap();
+    let o = bin()
+        .args(["scan", &demo(), "--fail-on", "high"])
+        .output()
+        .unwrap();
     assert_eq!(o.status.code(), Some(1));
 }
 

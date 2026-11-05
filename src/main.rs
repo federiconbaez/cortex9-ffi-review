@@ -21,7 +21,8 @@ fn main() -> ExitCode {
         return ExitCode::from(2);
     }
     let root = PathBuf::from(&args[1]);
-    let (mut json, mut top, mut emit, mut fail_on, mut include_tests) = (false, 20usize, None, None, false);
+    let (mut json, mut top, mut emit, mut fail_on, mut include_tests) =
+        (false, 20usize, None, None, false);
     let mut i = 2;
     while i < args.len() {
         match args[i].as_str() {
@@ -82,7 +83,10 @@ fn main() -> ExitCode {
         }
     }
     if !rep.parse_errors.is_empty() {
-        eprintln!("{} file(s) could not be parsed; report is incomplete", rep.parse_errors.len());
+        eprintln!(
+            "{} file(s) could not be parsed; report is incomplete",
+            rep.parse_errors.len()
+        );
         return ExitCode::from(3);
     }
     if let Some(t) = fail_on {

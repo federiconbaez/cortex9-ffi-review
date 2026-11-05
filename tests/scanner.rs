@@ -20,8 +20,12 @@ fn export_without_null_check_is_high() {
             s.iter().map(|&b| b as u64).sum()
         }"#;
     let (f, e) = scan_source("t.rs", src).unwrap();
-    assert!(f.iter().any(|f| f.kind == "no-null-check" && f.risk == Risk::High));
-    assert!(f.iter().any(|f| f.kind == "raw-slice" && f.function == "sum"));
+    assert!(f
+        .iter()
+        .any(|f| f.kind == "no-null-check" && f.risk == Risk::High));
+    assert!(f
+        .iter()
+        .any(|f| f.kind == "raw-slice" && f.function == "sum"));
     assert!(f.iter().any(|f| f.kind == "panic-across-ffi"));
     assert_eq!(e.len(), 1);
     assert_eq!(e[0].symbol, "sum");
@@ -140,7 +144,12 @@ fn ranking_orders_by_summed_risk() {
 fn demo_buggy_exports_flagged_fixed_not() {
     let dir = Path::new(env!("CARGO_MANIFEST_DIR")).join("examples/demo-ffi");
     let rep = scan_dir_opts(&dir, false);
-    let nn: Vec<&str> = rep.findings.iter().filter(|f| f.kind == "no-null-check").map(|f| f.function.as_str()).collect();
+    let nn: Vec<&str> = rep
+        .findings
+        .iter()
+        .filter(|f| f.kind == "no-null-check")
+        .map(|f| f.function.as_str())
+        .collect();
     for b in ["buggy_sum", "buggy_strlen", "buggy_store", "buggy_copy"] {
         assert!(nn.contains(&b), "{b} sin no-null-check: {nn:?}");
     }
@@ -157,8 +166,19 @@ fn generated_tests_cover_every_simple_export() {
     let (src, skipped) = generate_tests(&rep);
     assert!(skipped.is_empty(), "{skipped:?}");
     for e in &rep.exports {
-        assert!(src.contains(&format!("fn {}(", e.symbol)), "falta declaración de {}", e.symbol);
-        assert!(src.contains(&format!("ffi_review_{}_", e.symbol)), "falta test de {}", e.symbol);
+        assert!(
+            src.contains(&format!("fn {}(", e.symbol)),
+            "falta declaración de {}",
+            e.symbol
+        );
+        assert!(
+            src.contains(&format!("ffi_review_{}_", e.symbol)),
+            "falta test de {}",
+            e.symbol
+        );
     }
-    assert!(syn::parse_file(&src).is_ok(), "el archivo generado no parsea");
+    assert!(
+        syn::parse_file(&src).is_ok(),
+        "el archivo generado no parsea"
+    );
 }
