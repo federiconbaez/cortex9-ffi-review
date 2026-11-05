@@ -5,7 +5,32 @@ on:
     branches: [main]
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
+  lint:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+      - name: Formato (rustfmt)
+        run: cargo fmt --check
+      - name: Clippy con warnings como error
+        run: cargo clippy --all-targets --locked -- -D warnings
+
+  audit:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: taiki-e/install-action@v2
+        with:
+          tool: cargo-audit
+      - name: Advisories RUSTSEC sobre Cargo.lock
+        run: cargo audit
+
   test:
     runs-on: ubuntu-24.04
     steps:
