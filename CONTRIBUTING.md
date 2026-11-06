@@ -16,7 +16,7 @@ See [README.md](README.md) for usage.
 - Bugs and enhancement requests: open an issue at <https://github.com/federiconbaez/cortex9-ffi-review/issues>.
   Include the commit or version, your OS and toolchain version, the exact command,
   and the output you got versus what you expected.
-- Security problems: do **not** open a public issue; follow [SECURITY.md](SECURITY.md).
+- Security problems: follow [SECURITY.md](SECURITY.md) and do not post exploit details publicly.
 
 ## Contribution process
 

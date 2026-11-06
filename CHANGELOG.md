@@ -6,20 +6,11 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
-### Added
-- `SECURITY.md`, `CONTRIBUTING.md`, this changelog and an English README
-  (`README.en.md`).
-- CI `lint` job (`cargo fmt --check`, `cargo clippy --all-targets -- -D warnings`)
-  and a `cargo audit` step on `Cargo.lock`.
-- CI self-scan: `ffi-review scan . --fail-on medium` on the tool's own source.
+Nothing yet.
 
-### Changed
-- Source formatted with `rustfmt` (no behavior change; the generated demo test file
-  is byte-identical).
+## [0.1.0] - 2026-11-06
 
-## [0.1.0] - not yet tagged
-
-First version, as declared in `Cargo.toml`.
+First tagged release. Version as declared in `Cargo.toml`.
 
 ### Added
 - `ffi-review scan <dir>`: report of FFI boundaries and unsafe operations of a Rust
@@ -35,6 +26,18 @@ First version, as declared in `Cargo.toml`.
 - 16 tests (scanner and CLI), a pre-registered lab with a development corpus of 20
   RUSTSEC advisories and a held-out corpus of 10, and miri on a demo crate in CI.
   Results and limits are in the README.
+
+### Project infrastructure (added before tagging)
+*Added:*
+- `SECURITY.md`, `CONTRIBUTING.md`, this changelog and an English README
+  (`README.en.md`).
+- CI `lint` job (`cargo fmt --check`, `cargo clippy --all-targets -- -D warnings`)
+  and a `cargo audit` step on `Cargo.lock`.
+- CI self-scan: `ffi-review scan . --fail-on medium` on the tool's own source.
+
+*Changed:*
+- Source formatted with `rustfmt` (no behavior change; the generated demo test file
+  is byte-identical).
 
 ### Security
 - No known vulnerabilities fixed in this version.

@@ -106,7 +106,7 @@ actual, miri sobre el demo y el laboratorio completo con artefacto `lab-results`
 
 - Errores y pedidos de mejora: <https://github.com/federiconbaez/cortex9-ffi-review/issues>
 - Cómo contribuir (proceso de PR, requisitos y tests): [CONTRIBUTING.md](CONTRIBUTING.md)
-- Vulnerabilidades, por canal privado: [SECURITY.md](SECURITY.md)
+- Reportar vulnerabilidades (todavía sin canal privado): [SECURITY.md](SECURITY.md)
 - Cambios por versión: [CHANGELOG.md](CHANGELOG.md)
 
 ## Licencia

@@ -101,7 +101,7 @@ python3 lab/miri_demo.py  # needs nightly + miri
 
 - Bugs and feature requests: <https://github.com/federiconbaez/cortex9-ffi-review/issues>
 - How to contribute: [CONTRIBUTING.md](CONTRIBUTING.md)
-- Vulnerabilities (private): [SECURITY.md](SECURITY.md)
+- Reporting vulnerabilities (no private channel yet): [SECURITY.md](SECURITY.md)
 - Changes per version: [CHANGELOG.md](CHANGELOG.md)
 
 ## License
